@@ -1,4 +1,4 @@
-package com.shub39.achpb
+package com.shub39.achpb.app
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
