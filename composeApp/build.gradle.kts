@@ -16,7 +16,7 @@ plugins {
 }
 
 buildkonfig {
-    packageName = "com.kmp.template"
+    packageName = "com.shub39.achpb"
 
     defaultConfigs {
         buildConfigField(STRING, "name", "value")
@@ -114,11 +114,11 @@ kotlin {
 }
 
 android {
-    namespace = "com.kmp.template"
+    namespace = "com.shub39.achpb"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.kmp.template"
+        applicationId = "com.shub39.achpb"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -162,11 +162,11 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = "com.kmp.template.MainKt"
+        mainClass = "com.shub39.achpb.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.kmp.template"
+            packageName = "com.shub39.achpb"
             packageVersion = "1.0.0"
         }
     }

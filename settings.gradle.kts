@@ -1,4 +1,4 @@
-rootProject.name = "Template"
+rootProject.name = "Achpb"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

@@ -1,4 +1,4 @@
-package com.kmp.template.di
+package com.shub39.achpb.di
 
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration

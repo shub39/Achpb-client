@@ -1,4 +1,4 @@
-package com.kmp.template
+package com.shub39.achpb
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

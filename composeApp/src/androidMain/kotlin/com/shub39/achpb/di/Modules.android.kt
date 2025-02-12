@@ -1,4 +1,4 @@
-package com.kmp.template.di
+package com.shub39.achpb.di
 
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp

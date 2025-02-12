@@ -1,6 +1,6 @@
-package com.kmp.template.di
+package com.shub39.achpb.di
 
-import com.kmp.template.core.data.HttpClientFactory
+import com.shub39.achpb.core.data.HttpClientFactory
 import org.koin.core.module.Module
 import org.koin.dsl.module
 

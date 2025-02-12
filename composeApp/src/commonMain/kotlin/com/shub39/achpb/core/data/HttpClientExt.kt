@@ -1,6 +1,6 @@
-package com.kmp.template.core.data
+package com.shub39.achpb.core.data
 
-import com.kmp.template.core.domain.DataError
+import com.shub39.achpb.core.domain.DataError
 import io.ktor.client.call.NoTransformationFoundException
 import io.ktor.client.call.body
 import io.ktor.client.network.sockets.SocketTimeoutException
@@ -8,7 +8,7 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.ensureActive
 import kotlin.coroutines.coroutineContext
-import com.kmp.template.core.domain.Result
+import com.shub39.achpb.core.domain.Result
 
 suspend inline fun <reified T> safeCall(
     execute: () -> HttpResponse

@@ -1,4 +1,4 @@
-package com.kmp.template.core.data
+package com.shub39.achpb.core.data
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine

@@ -1,4 +1,4 @@
-package com.kmp.template.core.domain
+package com.shub39.achpb.core.domain
 
 sealed interface DataError: Error {
     enum class Remote: DataError {

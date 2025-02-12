@@ -1,7 +1,7 @@
-package com.kmp.template
+package com.shub39.achpb
 
 import android.app.Application
-import com.kmp.template.di.initKoin
+import com.shub39.achpb.di.initKoin
 import org.koin.android.ext.koin.androidContext
 
 class MainApp: Application() {

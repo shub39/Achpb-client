@@ -1,4 +1,4 @@
-package com.kmp.template.core.presentation
+package com.shub39.achpb.core.presentation
 
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.resources.StringResource
