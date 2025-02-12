@@ -15,6 +15,7 @@ fun AppTheme(
         withAmoled = theme.withAmoled,
         style = theme.style,
         seedColor = Color(theme.seedColor),
+        typography = provideTypography(theme.fontResource),
         content = content
     )
 }

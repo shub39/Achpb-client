@@ -6,4 +6,16 @@
     <string name="too_many_requests">Too many Requests!</string>
     <string name="no_internet">No Internet!</string>
     <string name="server_error">Server Error!</string>
+    <string name="home_title">Achpb</string>
+    <string name="settings">Settings</string>
+    <string name="system_theme">Use System Theme</string>
+    <string name="system_theme_desc">Set theme according to system preferences</string>
+    <string name="is_dark">Use Dark Theme</string>
+    <string name="is_dark_desc">Use dark theme for app</string>
+    <string name="is_amoled">AMOLED palette</string>
+    <string name="is_amoled_desc">Best experienced on AMOLED displays</string>
+    <string name="style">Select palette style</string>
+    <string name="seed_color">Select seed color</string>
+    <string name="seed_color_desc">Select color to generate palette from</string>
+    <string name="done">Done</string>
 </resources>
