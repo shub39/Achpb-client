@@ -18,4 +18,6 @@
     <string name="seed_color">Select seed color</string>
     <string name="seed_color_desc">Select color to generate palette from</string>
     <string name="done">Done</string>
+    <string name="anime_girls">Anime Girls</string>
+    <string name="anime_boys">Anime Boys</string>
 </resources>
