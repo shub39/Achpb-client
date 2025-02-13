@@ -46,6 +46,7 @@ import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -81,6 +82,7 @@ import com.materialkolor.PaletteStyle
 import com.materialkolor.ktx.from
 import com.materialkolor.palettes.TonalPalette
 import com.materialkolor.rememberDynamicColorScheme
+import com.shub39.achpb.BuildKonfig
 import com.shub39.achpb.core.presentation.PageFill
 import com.shub39.achpb.core.presentation.theme.Theme
 import org.jetbrains.compose.resources.stringResource
@@ -227,9 +229,11 @@ fun SettingsPage(
                     },
                     supportingContent = {
                         FlowRow(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            modifier = Modifier.padding(vertical = 8.dp)
+                            horizontalArrangement = Arrangement.Center,
+                            verticalArrangement = Arrangement.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 8.dp)
                         ) {
                             PaletteStyle.entries.toList().forEach { style ->
                                 val scheme = rememberDynamicColorScheme(
@@ -241,6 +245,7 @@ fun SettingsPage(
 
                                 SelectableMiniPalette(
                                     selected = theme.style == style,
+                                    modifier = Modifier.padding(4.dp),
                                     onClick = {
                                         action(SettingsAction.OnStyleChange(style))
                                     },
@@ -253,6 +258,25 @@ fun SettingsPage(
                                 )
                             }
                         }
+                    }
+                )
+            }
+
+            item {
+                HorizontalDivider()
+            }
+
+            item {
+                ListItem(
+                    headlineContent = {
+                        Text(
+                            text = "Made by shub39"
+                        )
+                    },
+                    supportingContent = {
+                        Text(
+                            text = "because yes"
+                        )
                     }
                 )
             }

@@ -17,7 +17,8 @@ buildkonfig {
     packageName = "com.shub39.achpb"
 
     defaultConfigs {
-        buildConfigField(STRING, "name", "value")
+        buildConfigField(STRING, "name", "Achpb")
+        buildConfigField(STRING, "version", "1.0.0")
     }
 }
 
@@ -97,7 +98,7 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
     }
     packaging {
         resources {

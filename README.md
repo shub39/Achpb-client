@@ -1,15 +1,15 @@
-# KMP-Template
+# Achpb
+> **A**nime **C**haracters **H**olding **P**rogramming **B**ooks
 
-The goal is to have a KMP project template with all the knowledge I have gathered 
-so that I start working on a project in the morning and ship it by evening.
+Desktop and Android client for [senpy api](https://api.senpy.club/) which is an API for
+[Anime Girls Holding Programming Books](https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books)
+and [Anime Boys Holding Programming Books](https://github.com/flyingcakes85/Anime-Boys-Holding-Programming-Books)
+because yes
 
 ### Targeted platforms
 
-> No IOS because of hardware limitations and beta status
-
 - Android
 - Desktop
-- Web via kotlin/wasm (only for previews)
 
 ### Libraries (besides android and Jetbrains stuff)
 
@@ -26,10 +26,3 @@ so that I start working on a project in the morning and ship it by evening.
 - [MaterialKolor](https://github.com/jordond/MaterialKolor) for theming
 - [Landscapist](https://github.com/skydoves/landscapist) for images
 - [Colorpicker Compose](https://github.com/skydoves/colorpicker-compose) for color picker
-- [Compose Icons](https://github.com/DevSrSouza/compose-icons) for Icons
-
-### TODO
-- [ ] Figure out desktop releases (see [spmp](https://github.com/toasterofbread/spmp))
-- [ ] Add actions
-- [ ] Build sample and deploy
-- [ ] Document everything
