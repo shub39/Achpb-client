@@ -5,6 +5,7 @@ import com.shub39.achpb.browser.domain.Language
 import com.shub39.achpb.core.presentation.UiText
 
 data class HomeState (
+    val homeStateDef: HomeStateDef = HomeStateDef.Loading,
     val images: List<Image> = emptyList(),
     val language: Language? = null,
     val girlsRepoLangs: List<Language> = emptyList(),

@@ -6,8 +6,10 @@ import com.shub39.achpb.browser.domain.AnimeBoysRepo
 import com.shub39.achpb.browser.domain.AnimeGirlsRepo
 import com.shub39.achpb.browser.presentation.home.HomeAction
 import com.shub39.achpb.browser.presentation.home.HomeState
+import com.shub39.achpb.browser.presentation.home.HomeStateDef
 import com.shub39.achpb.browser.presentation.settings.SettingsAction
 import com.shub39.achpb.core.domain.AppDataStore
+import com.shub39.achpb.core.domain.Result
 import com.shub39.achpb.core.domain.onError
 import com.shub39.achpb.core.domain.onSuccess
 import com.shub39.achpb.core.presentation.theme.Theme
@@ -54,10 +56,32 @@ class BrowserVM(
             is HomeAction.OnLanguageChange -> {
                 _homeState.update {
                     it.copy(
-                        language = action.language
+                        language = action.language,
+                        homeStateDef = HomeStateDef.Loading
                     )
                 }
-                // TODO: Update Images
+
+                val imageReq = if (_homeState.value.selectedTab == 0) {
+                    animeGirlsRepo.getImagesForLang(action.language)
+                } else {
+                    animeBoysRepo.getImagesForLang(action.language)
+                }
+
+                when (imageReq) {
+                    is Result.Error -> _homeState.update {
+                        it.copy(
+                            error = imageReq.error.toUiText(),
+                            homeStateDef = HomeStateDef.Error
+                        )
+                    }
+
+                    is Result.Success -> _homeState.update {
+                        it.copy(
+                            images = imageReq.data,
+                            homeStateDef = HomeStateDef.Idle
+                        )
+                    }
+                }
             }
 
             is HomeAction.OnTabChange -> {
@@ -93,7 +117,8 @@ class BrowserVM(
             .onError { error ->
                 _homeState.update {
                     it.copy(
-                        error = error.toUiText()
+                        error = error.toUiText(),
+                        homeStateDef = HomeStateDef.Error
                     )
                 }
             }
@@ -102,14 +127,32 @@ class BrowserVM(
             .onSuccess { result ->
                 _homeState.update {
                     it.copy(
-                        girlsRepoLangs = result
+                        girlsRepoLangs = result,
+                        language = result[13]
                     )
+                }
+
+                when (val imageReq = animeGirlsRepo.getImagesForLang(result[13])) {
+                    is Result.Error -> _homeState.update {
+                        it.copy(
+                            error = imageReq.error.toUiText(),
+                            homeStateDef = HomeStateDef.Error
+                        )
+                    }
+
+                    is Result.Success -> _homeState.update {
+                        it.copy(
+                            images = imageReq.data,
+                            homeStateDef = HomeStateDef.Idle
+                        )
+                    }
                 }
             }
             .onError { error ->
                 _homeState.update {
                     it.copy(
-                        error = error.toUiText()
+                        error = error.toUiText(),
+                        homeStateDef = HomeStateDef.Error
                     )
                 }
             }

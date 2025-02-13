@@ -113,7 +113,7 @@ android {
             )
         }
         debug {
-            resValue("string", "app_name", "Debug")
+            resValue("string", "app_name", "Achpb Debug")
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
         }

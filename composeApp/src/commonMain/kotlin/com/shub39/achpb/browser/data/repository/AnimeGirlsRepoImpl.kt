@@ -36,7 +36,7 @@ class AnimeGirlsRepoImpl(
     override suspend fun getImagesForLang(language: Language): Result<List<Image>, DataError> {
         val request = safeCall<List<String>> {
             httpClient.get(
-                urlString = "${BASE_URL}/language/$language"
+                urlString = "${BASE_URL}/language/${language.name}"
             )
         }
 
