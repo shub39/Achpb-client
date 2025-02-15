@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 class BrowserVM(
     private val dataStore: AppDataStore,
     private val animeBoysRepo: AnimeBoysRepo,
-    private val animeGirlsRepo: AnimeGirlsRepo
+    private val animeGirlsRepo: AnimeGirlsRepo,
 ): ViewModel() {
 
     private var observeThemeJob: Job? = null

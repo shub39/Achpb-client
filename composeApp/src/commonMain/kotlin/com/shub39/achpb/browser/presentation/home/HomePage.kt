@@ -7,15 +7,10 @@ import achpb.composeapp.generated.resources.download
 import achpb.composeapp.generated.resources.home_title
 import achpb.composeapp.generated.resources.unknown
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,9 +18,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
@@ -43,7 +35,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
@@ -57,18 +48,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import com.shub39.achpb.browser.presentation.ImageView
 import com.shub39.achpb.core.presentation.PageFill
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.coil3.CoilImage
-import com.skydoves.landscapist.components.rememberImageComponent
-import com.skydoves.landscapist.placeholder.shimmer.Shimmer
-import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -124,45 +112,7 @@ fun HomePage(
                 when (homeStateDef) {
                     HomeStateDef.Loading -> CircularProgressIndicator()
 
-                    HomeStateDef.Idle -> LazyVerticalStaggeredGrid(
-                        columns = StaggeredGridCells.Adaptive(180.dp),
-                        modifier = Modifier
-                            .animateContentSize(animationSpec = tween(durationMillis = 300))
-                            .fillMaxSize(),
-                        verticalItemSpacing = 8.dp,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        contentPadding = PaddingValues(16.dp)
-                    ) {
-                        items(state.images, key = { it.url }) { image ->
-                            CoilImage(
-                                imageModel = { image.url },
-                                imageOptions = ImageOptions(
-                                    contentScale = ContentScale.Crop,
-                                    alignment = Alignment.Center
-                                ),
-                                failure = {
-                                    Icon(
-                                        imageVector = Icons.Default.Warning,
-                                        contentDescription = "Warning"
-                                    )
-                                },
-                                component = rememberImageComponent {
-                                    +ShimmerPlugin(
-                                        Shimmer.Resonate(
-                                            baseColor = MaterialTheme.colorScheme.surface,
-                                            highlightColor = MaterialTheme.colorScheme.primary
-                                        )
-                                    )
-                                },
-                                modifier = Modifier
-                                    .aspectRatio(1f)
-                                    .clip(MaterialTheme.shapes.large)
-                                    .clickable {
-                                        showFullImage = image.url
-                                    }
-                            )
-                        }
-                    }
+                    HomeStateDef.Idle -> ImageView(state.images)
 
                     HomeStateDef.Error -> Column {
                         Icon(

@@ -1,17 +1,15 @@
 # Achpb
 > **A**nime **C**haracters **H**olding **P**rogramming **B**ooks
 
-Desktop and Android client for [senpy api](https://api.senpy.club/) which is an API for
+Android client for [senpy](https://api.senpy.club/) which is an API for
 [Anime Girls Holding Programming Books](https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books)
 and [Anime Boys Holding Programming Books](https://github.com/flyingcakes85/Anime-Boys-Holding-Programming-Books)
 because yes
 
-### Targeted platforms
+> ### Android
+> Dowload latest from [Releases](https://github.com/shub39/Achpb-client/releases)
 
-- Android
-- Desktop
-
-### Libraries (besides android and Jetbrains stuff)
+## Libraries
 
 > See [version catalog](gradle/libs.versions.toml) for more info
 
