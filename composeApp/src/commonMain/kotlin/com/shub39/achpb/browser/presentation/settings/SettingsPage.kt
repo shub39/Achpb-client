@@ -21,11 +21,11 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,6 +37,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -88,10 +89,12 @@ import com.shub39.achpb.core.presentation.PageFill
 import com.shub39.achpb.core.presentation.theme.Theme
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Brands
+import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.brands.Github
+import compose.icons.fontawesomeicons.solid.Globe
 import org.jetbrains.compose.resources.stringResource
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsPage(
     theme: Theme,
@@ -234,10 +237,12 @@ fun SettingsPage(
                         )
                     },
                     supportingContent = {
-                        FlowRow(
+                        val scrollState = rememberScrollState()
+
+                        Row(
                             horizontalArrangement = Arrangement.Center,
-                            verticalArrangement = Arrangement.Center,
                             modifier = Modifier
+                                .horizontalScroll(scrollState)
                                 .fillMaxWidth()
                                 .padding(vertical = 8.dp)
                         ) {
@@ -276,6 +281,84 @@ fun SettingsPage(
                 ListItem(
                     headlineContent = {
                         Text(
+                            text = "api.senpy.club"
+                        )
+                    },
+                    supportingContent = {
+                        Text(
+                            text = "The GOAT"
+                        )
+                    },
+                    trailingContent = {
+                        IconButton(
+                            onClick = { uriHandler.openUri("https://api.senpy.club/") }
+                        ) {
+                            Icon(
+                                imageVector = FontAwesomeIcons.Solid.Globe,
+                                contentDescription = "Github",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    }
+                )
+            }
+
+            item {
+                ListItem(
+                    headlineContent = {
+                        Text(
+                            text = "Anime Girls Holding Programming Books"
+                        )
+                    },
+                    supportingContent = {
+                        Text(
+                            text = "Why? wdym they can't?"
+                        )
+                    },
+                    trailingContent = {
+                        IconButton(
+                            onClick = { uriHandler.openUri("https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books") }
+                        ) {
+                            Icon(
+                                imageVector = FontAwesomeIcons.Brands.Github,
+                                contentDescription = "Github",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    }
+                )
+            }
+
+            item {
+                ListItem(
+                    headlineContent = {
+                        Text(
+                            text = "Anime Boys Holding Programming Books"
+                        )
+                    },
+                    supportingContent = {
+                        Text(
+                            text = "Please contribute here"
+                        )
+                    },
+                    trailingContent = {
+                        IconButton(
+                            onClick = { uriHandler.openUri("https://github.com/flyingcakes85/Anime-Boys-Holding-Programming-Books") }
+                        ) {
+                            Icon(
+                                imageVector = FontAwesomeIcons.Brands.Github,
+                                contentDescription = "Github",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
+                    }
+                )
+            }
+
+            item {
+                ListItem(
+                    headlineContent = {
+                        Text(
                             text = "Made by shub39"
                         )
                     },
@@ -290,7 +373,8 @@ fun SettingsPage(
                         ) {
                             Icon(
                                 imageVector = FontAwesomeIcons.Brands.Github,
-                                contentDescription = "Github"
+                                contentDescription = "Github",
+                                modifier = Modifier.size(24.dp)
                             )
                         }
                     }

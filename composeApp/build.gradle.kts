@@ -72,6 +72,7 @@ kotlin {
             implementation(libs.landscapist.coil)
             implementation(libs.landscapist.placeholder)
             implementation(libs.composeIcons.fontAwesome)
+            implementation(libs.zoomable)
             api(libs.koin.core)
         }
         dependencies {

@@ -1,7 +1,16 @@
 package com.shub39.achpb.browser.presentation
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.os.Environment
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import coil3.ImageLoader
+import coil3.request.ImageRequest
+import coil3.request.SuccessResult
+import coil3.request.allowHardware
+import coil3.toBitmap
 import com.shub39.achpb.browser.domain.AnimeBoysRepo
 import com.shub39.achpb.browser.domain.AnimeGirlsRepo
 import com.shub39.achpb.browser.presentation.home.HomeAction
@@ -14,6 +23,7 @@ import com.shub39.achpb.core.domain.onError
 import com.shub39.achpb.core.domain.onSuccess
 import com.shub39.achpb.core.presentation.theme.Theme
 import com.shub39.achpb.core.presentation.toUiText
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,12 +34,16 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
 
 class BrowserVM(
     private val dataStore: AppDataStore,
     private val animeBoysRepo: AnimeBoysRepo,
     private val animeGirlsRepo: AnimeGirlsRepo,
-): ViewModel() {
+    private val imageLoader: ImageLoader
+) : ViewModel() {
 
     private var observeThemeJob: Job? = null
 
@@ -92,6 +106,55 @@ class BrowserVM(
                     )
                 }
             }
+
+            is HomeAction.OnImageDownload -> {
+                _homeState.value.snackBarHost.currentSnackbarData?.dismiss()
+                downloadImage(action.context, action.url, action.name)
+            }
+
+            HomeAction.OnReferesh -> {
+                _homeState.update {
+                    it.copy(
+                        homeStateDef = HomeStateDef.Loading
+                    )
+                }
+
+                initialLoad()
+            }
+        }
+    }
+
+    private suspend fun downloadImage(context: Context, url: String, name: String) = withContext(Dispatchers.IO) {
+        _homeState.value.snackBarHost.showSnackbar("Downloading...")
+
+        val request = ImageRequest.Builder(context)
+            .data(url)
+            .allowHardware(false)
+            .build()
+
+        val result = (imageLoader.execute(request) as? SuccessResult)?.image?.toBitmap()
+
+        if (result != null) {
+            val directory =
+                File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Achpb")
+
+            if (!directory.exists() || !directory.isDirectory) directory.mkdirs()
+
+            val file = File(directory, name)
+
+            try {
+                val outputStream = FileOutputStream(file)
+                result.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                outputStream.flush()
+                outputStream.close()
+
+                _homeState.value.snackBarHost.showSnackbar("Saved to Donwloads/Achpb/$name")
+            } catch (e: Exception) {
+                Log.e("ViewModel", "Error Saving Image: ${e.printStackTrace()}")
+                _homeState.value.snackBarHost.showSnackbar("Failed to save Image :(")
+            }
+        } else {
+            _homeState.value.snackBarHost.showSnackbar("Download Failed :(")
         }
     }
 
