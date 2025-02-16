@@ -68,7 +68,9 @@ fun ImageView(
                         Icon(
                             imageVector = Icons.Default.Warning,
                             contentDescription = "Error",
-                            modifier = Modifier.size(128.dp)
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                                .size(128.dp)
                         )
                     }
                 },

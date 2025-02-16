@@ -1,1 +1,7 @@
-Anime Characters Holding Programming Books, Work in Progress
+App to browse Pictures of Anime Characters Holding Programming Books. A client for [senpy](https://api.senpy.club/)
+which is an API for [Anime Girls Holding Programming Books](https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books)
+and [Anime Boys Holding Programming Books](https://github.com/flyingcakes85/Anime-Boys-Holding-Programming-Books)
+because yes
+
+- View Images with zoom
+- Download Favorites
