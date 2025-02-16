@@ -7,6 +7,11 @@ Android client for [senpy](https://api.senpy.club/) which is an API for
 and [Anime Boys Holding Programming Books](https://github.com/flyingcakes85/Anime-Boys-Holding-Programming-Books)
 because yes
 
+
+> [<img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Android/android2.svg">]()
+> [<img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/AndroidStudio/androidstudio3.svg">]()
+> [<img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Kotlin/kotlin1.svg">]()
+
 > ### Get From
 > Dowload latest from [Releases](https://github.com/shub39/Achpb-client/releases)
 
