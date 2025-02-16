@@ -1,12 +1,8 @@
 ![](fastlane/metadata/android/en-US/images/icon-192.png)
 
-## **A**nime **C**haracters **H**olding **P**rogramming **B**ooks
+# Achpb
 
-Android client for [senpy](https://api.senpy.club/) which is an API for
-[Anime Girls Holding Programming Books](https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books)
-and [Anime Boys Holding Programming Books](https://github.com/flyingcakes85/Anime-Boys-Holding-Programming-Books)
-because yes
-
+### Android client for [senpy](https://api.senpy.club/) which is an API for [Anime Girls Holding Programming Books](https://github.com/cat-milk/Anime-Girls-Holding-Programming-Books) and [Anime Boys Holding Programming Books](https://github.com/flyingcakes85/Anime-Boys-Holding-Programming-Books) because yes
 
 > [<img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/Android/android2.svg">]()
 > [<img src="https://ziadoua.github.io/m3-Markdown-Badges/badges/AndroidStudio/androidstudio3.svg">]()
